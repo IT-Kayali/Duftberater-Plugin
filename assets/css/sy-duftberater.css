@@ -1,0 +1,3761 @@
+
+:root {
+	--sydb-bg: #070707;
+	--sydb-surface: rgba(255, 255, 255, 0.05);
+	--sydb-surface-strong: rgba(255, 255, 255, 0.08);
+	--sydb-border: rgba(212, 175, 55, 0.20);
+	--sydb-border-strong: rgba(212, 175, 55, 0.42);
+	--sydb-text: #f5f1e8;
+	--sydb-text-soft: rgba(245, 241, 232, 0.92);
+	--sydb-text-muted: rgba(245, 241, 232, 0.70);
+	--sydb-gold: var(--sydb-accent, #d4af37);
+	--sydb-shadow: 0 24px 60px rgba(0, 0, 0, 0.30);
+	--sydb-radius-xl: 28px;
+	--sydb-radius-lg: 22px;
+	--sydb-radius-md: 16px;
+}
+
+.sy-duftberater-wrap,
+.sy-duftberater-wrap * {
+	box-sizing: border-box;
+}
+
+.sy-duftberater-wrap {
+	width: 100%;
+	max-width: 1180px;
+	margin: 24px auto;
+	padding: 0 16px;
+	font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.sy-duftberater-app {
+	position: relative;
+	background:
+		radial-gradient(circle at top right, rgba(212, 175, 55, 0.22), transparent 30%),
+		linear-gradient(135deg, #050505 0%, #0d0d0d 52%, #17130a 100%);
+	border: 1px solid var(--sydb-border);
+	border-radius: var(--sydb-radius-xl);
+	box-shadow: var(--sydb-shadow);
+	color: var(--sydb-text);
+	overflow: visible;
+}
+
+.sy-duftberater-shell {
+	display: flex;
+	flex-direction: column;
+}
+
+.sy-duftberater-header {
+	padding: 26px 28px 18px;
+	border-bottom: 1px solid rgba(255,255,255,0.06);
+	background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+}
+
+.sy-duftberater-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 18px;
+	border-radius: 999px;
+	border: 1px solid var(--sydb-border-strong);
+	background: rgba(212, 175, 55, 0.08);
+	color: #ffe7a6;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin-bottom: 14px;
+}
+
+.sy-duftberater-title {
+	margin: 0 0 10px;
+	font-size: clamp(30px, 4vw, 56px);
+	line-height: 1.04;
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	color: #fff8e8;
+}
+
+.sy-duftberater-subtitle {
+	margin: 0;
+	max-width: 720px;
+	font-size: 18px;
+	line-height: 1.6;
+	color: var(--sydb-text-soft);
+}
+
+.sy-duftberater-progress-wrap {
+	padding: 16px 28px 12px;
+}
+
+.sy-duftberater-selection-panel {
+	margin-top: 18px;
+	padding: 18px;
+	border-radius: 22px;
+	border: 1px solid rgba(212,175,55,0.18);
+	background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.sy-duftberater-selection-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 14px;
+}
+
+.sy-duftberater-selection-kicker {
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 10px;
+	border-radius: 999px;
+	background: rgba(212,175,55,0.10);
+	border: 1px solid rgba(212,175,55,0.24);
+	color: #f2d784;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-bottom: 8px;
+}
+
+.sy-duftberater-selection-text {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.55;
+	color: var(--sydb-text-muted);
+}
+
+.sy-duftberater-selection-groups {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 12px;
+}
+
+.sy-duftberater-selection-group {
+	padding: 14px;
+	border-radius: 18px;
+	background: rgba(255,255,255,0.03);
+	border: 1px solid rgba(255,255,255,0.08);
+	min-height: 100%;
+}
+
+.sy-duftberater-selection-group-head {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0;
+	margin: 0 0 12px;
+	background: transparent;
+	border: 0;
+	color: #fff8e8;
+	font-size: 14px;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+.sy-duftberater-selection-group-icon {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(212,175,55,0.10);
+	border: 1px solid rgba(212,175,55,0.20);
+}
+
+.sy-duftberater-selection-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.sy-duftberater-selection-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 11px;
+	border-radius: 999px;
+	background: rgba(255,255,255,0.05);
+	border: 1px solid rgba(212,175,55,0.22);
+	color: #fff4d1;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.sy-duftberater-selection-empty {
+	padding: 14px 16px;
+	border-radius: 18px;
+	background: rgba(255,255,255,0.03);
+	border: 1px dashed rgba(255,255,255,0.12);
+	color: var(--sydb-text-muted);
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.sy-duftberater-progress-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 12px;
+	font-size: 15px;
+	color: var(--sydb-text-soft);
+}
+
+.sy-duftberater-progress-bar {
+	position: relative;
+	width: 100%;
+	height: 10px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	overflow: hidden;
+}
+
+.sy-duftberater-progress-fill {
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: 0%;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #b8922d 0%, #efd98d 100%);
+	transition: width 260ms ease;
+}
+
+.sy-duftberater-content {
+	padding: 12px 28px 26px;
+	overflow: visible;
+}
+
+.sy-duftberater-step {
+	display: none;
+	animation: sydbFadeIn 0.22s ease;
+}
+
+.sy-duftberater-step.is-active {
+	display: block;
+}
+
+.sy-duftberater-step-head {
+	margin-bottom: 18px;
+}
+
+.sy-duftberater-step-kicker {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: rgba(212,175,55,0.10);
+	border: 1px solid rgba(212,175,55,0.22);
+	color: #f2d784;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-bottom: 12px;
+}
+
+.sy-duftberater-step-title {
+	margin: 0 0 10px;
+	font-size: clamp(28px, 3vw, 42px);
+	line-height: 1.12;
+	font-weight: 800;
+	color: #fffaf0;
+}
+
+.sy-duftberater-step-text {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.65;
+	color: var(--sydb-text-soft);
+}
+
+.sy-duftberater-hint {
+	margin: 0 0 18px;
+	padding: 16px 18px;
+	border-radius: 18px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+	border: 1px solid rgba(212,175,55,0.18);
+	color: #f5ecd7;
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.sy-duftberater-options,
+.sy-duftberater-results {
+	overflow: visible;
+	padding-right: 0;
+}
+
+.sy-duftberater-option-grid,
+.sy-duftberater-results-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 14px;
+}
+
+.sy-duftberater-option-card {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	text-align: left;
+	width: 100%;
+	min-height: 94px;
+	padding: 18px 68px 18px 20px;
+	border-radius: var(--sydb-radius-lg);
+	border: 1px solid rgba(255,255,255,0.08);
+	background:
+		linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02)),
+		rgba(255,255,255,0.02);
+	color: #fff6df;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.45;
+	cursor: pointer;
+	transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+	box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+	backdrop-filter: blur(8px);
+}
+
+.sy-duftberater-option-card:hover {
+	transform: translateY(-3px);
+	border-color: rgba(212,175,55,0.34);
+	background:
+		linear-gradient(180deg, rgba(212,175,55,0.08), rgba(255,255,255,0.04)),
+		rgba(255,255,255,0.03);
+}
+
+.sy-duftberater-option-card.is-selected {
+	border-color: rgba(212,175,55,0.76);
+	background:
+		linear-gradient(135deg, rgba(212,175,55,0.18), rgba(255,255,255,0.05)),
+		rgba(255,255,255,0.05);
+	box-shadow: 0 14px 34px rgba(0,0,0,0.24), 0 0 0 1px rgba(212,175,55,0.22) inset;
+	color: #fffdf7;
+}
+
+.sy-duftberater-option-copy {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding-right: 8px;
+}
+
+.sy-duftberater-option-title {
+	display: block;
+	font-size: 18px;
+	font-weight: 800;
+	line-height: 1.35;
+	color: #fff8eb;
+}
+
+.sy-duftberater-option-subtitle {
+	display: block;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.45;
+	color: var(--sydb-text-muted);
+}
+
+.sy-duftberater-check {
+	position: absolute;
+	top: 50%;
+	right: 18px;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid rgba(212,175,55,0.45);
+	background: rgba(255,255,255,0.05);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	color: transparent;
+	transition: all 180ms ease;
+}
+
+.sy-duftberater-option-card.is-selected .sy-duftberater-check {
+	background: linear-gradient(135deg, #c7a03a, #f0dc96);
+	color: #171717;
+	border-color: rgba(255,255,255,0.2);
+}
+
+.sy-duftberater-option-card.is-recommended {
+	border-color: rgba(212, 175, 55, 0.42);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(212, 175, 55, 0.12) inset;
+}
+
+.sy-duftberater-option-card.is-soft {
+	opacity: 0.86;
+}
+
+.sy-duftberater-actions {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 12px;
+	padding-top: 18px;
+	margin-top: 18px;
+	border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.sy-duftberater-step-note {
+	color: var(--sydb-text-muted);
+	font-size: 14px;
+	text-align: left;
+	order: -1;
+}
+
+.sy-duftberater-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 52px;
+	padding: 14px 22px;
+	border-radius: 999px;
+	border: 1px solid rgba(212,175,55,0.34);
+	background: rgba(255,255,255,0.03);
+	color: #fff7e5;
+	font-size: 15px;
+	font-weight: 800;
+	line-height: 1;
+	cursor: pointer;
+	transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+	text-decoration: none;
+}
+
+.sy-duftberater-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+.sy-duftberater-btn-primary {
+	background: linear-gradient(135deg, #b8912e, #f0d98a);
+	color: #161616;
+	border-color: rgba(255,255,255,0.12);
+}
+
+.sy-duftberater-btn-primary:hover {
+	background: linear-gradient(135deg, #c69d32, #f6e3a0);
+}
+
+.sy-duftberater-result-card {
+	display: flex;
+	flex-direction: column;
+	border-radius: 22px;
+	overflow: hidden;
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.08);
+	box-shadow: 0 12px 26px rgba(0,0,0,0.20);
+}
+
+.sy-duftberater-result-image {
+	aspect-ratio: 16 / 9;
+	background: #111;
+	overflow: hidden;
+}
+
+.sy-duftberater-result-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.sy-duftberater-image-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ddd;
+	font-size: 14px;
+}
+
+.sy-duftberater-result-body {
+	padding: 20px;
+}
+
+.sy-duftberater-result-topline {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 12px;
+	flex-wrap: wrap;
+}
+
+.sy-duftberater-result-rank,
+.sy-duftberater-score {
+	display: inline-flex;
+	padding: 7px 12px;
+	border-radius: 999px;
+	background: rgba(212,175,55,0.12);
+	border: 1px solid rgba(212,175,55,0.22);
+	color: #f0d98a;
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.sy-duftberater-result-rank {
+	background: rgba(255,255,255,0.06);
+	border-color: rgba(255,255,255,0.10);
+	color: #fff8e8;
+}
+
+.sy-duftberater-match-bar {
+	width: 100%;
+	height: 8px;
+	border-radius: 999px;
+	background: rgba(255,255,255,0.08);
+	overflow: hidden;
+	margin: 0 0 14px;
+}
+
+.sy-duftberater-match-bar span {
+	display: block;
+	height: 100%;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #b8922d 0%, #efd98d 100%);
+}
+
+.sy-duftberater-result-title {
+	margin: 0 0 8px;
+	font-size: 24px;
+	font-weight: 800;
+	line-height: 1.2;
+	color: #fff9ee;
+}
+
+.sy-duftberater-result-text,
+.sy-duftberater-result-reason {
+	margin: 0 0 12px;
+	font-size: 15px;
+	line-height: 1.65;
+	color: var(--sydb-text-soft);
+}
+
+.sy-duftberater-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 12px;
+}
+
+.sy-duftberater-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 7px 12px;
+	border-radius: 999px;
+	background: rgba(212,175,55,0.08);
+	border: 1px solid rgba(212,175,55,0.22);
+	color: #f0d98a;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.sy-duftberater-chip-soft {
+	background: rgba(255,255,255,0.05);
+	border-color: rgba(255,255,255,0.09);
+	color: #f5f1e8;
+}
+
+.sy-duftberater-result-extra {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 16px;
+	color: var(--sydb-text-muted);
+	font-size: 13px;
+	margin-bottom: 14px;
+}
+
+.sy-duftberater-loading,
+.sy-duftberater-empty {
+	padding: 20px;
+	border-radius: 18px;
+	background: rgba(255,255,255,0.04);
+	border: 1px solid rgba(255,255,255,0.08);
+	color: #fff8e8;
+}
+
+@media (max-width: 767px) {
+	.sy-duftberater-wrap {
+		margin: 16px auto;
+		padding: 0 10px;
+	}
+
+	.sy-duftberater-header,
+	.sy-duftberater-progress-wrap,
+	.sy-duftberater-content {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.sy-duftberater-title {
+		font-size: 28px;
+	}
+
+	.sy-duftberater-subtitle,
+	.sy-duftberater-step-text {
+		font-size: 15px;
+	}
+
+	.sy-duftberater-step-title {
+		font-size: 26px;
+	}
+
+	.sy-duftberater-selection-panel {
+		padding: 14px;
+	}
+
+	.sy-duftberater-selection-groups {
+		grid-template-columns: 1fr;
+	}
+
+	.sy-duftberater-option-card {
+		min-height: 78px;
+		padding: 16px 56px 16px 16px;
+	}
+
+	.sy-duftberater-option-title {
+		font-size: 16px;
+	}
+
+	.sy-duftberater-option-subtitle {
+		font-size: 12px;
+	}
+}
+
+@keyframes sydbFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.sy-duftberater-result-note-block{margin-top:14px;}
+.sy-duftberater-result-note-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin-bottom:8px;font-weight:700;}
+
+
+.sy-duftberater-option-section{margin-bottom:18px;padding:16px;border:1px solid rgba(212,175,55,.18);border-radius:20px;background:rgba(255,255,255,.02)}
+.sy-duftberater-option-section-head{margin-bottom:12px}
+.sy-duftberater-option-section-head h4{margin:0 0 6px;font-size:18px;color:#fff}
+.sy-duftberater-option-section-head p{margin:0;color:rgba(255,255,255,.7);font-size:14px;line-height:1.5}
+.sy-duftberater-option-grid-usage{grid-template-columns:1fr}
+.sy-duftberater-option-grid-usage .sy-duftberater-option-card{min-height:84px}
+
+
+.sy-duftberater-usage-flow{display:grid;gap:18px}
+.sy-duftberater-usage-stage{display:none;animation:sydbFadeIn .22s ease}
+.sy-duftberater-usage-stage.is-active{display:block}
+.sy-duftberater-usage-stage .sy-duftberater-option-section-head{margin-bottom:14px;padding:0 2px}
+.sy-duftberater-usage-stage .sy-duftberater-option-section-head h4{margin:0 0 6px;font-size:22px;color:#fffaf0}
+.sy-duftberater-usage-stage .sy-duftberater-option-section-head p{margin:0;color:rgba(255,255,255,.74);font-size:15px;line-height:1.55}
+
+
+.sy-duftberater-usage-flow{display:block}
+.sy-duftberater-usage-crumbs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.sy-duftberater-usage-crumb{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.18);color:#f8e9bb;font-size:12px;font-weight:700}
+.sy-duftberater-usage-stage{display:none !important}
+.sy-duftberater-usage-stage.is-active{display:block !important}
+.sy-duftberater-usage-stage .sy-duftberater-option-grid{margin-top:0}
+.sy-duftberater-usage-stage .sy-duftberater-option-section-head{margin-bottom:16px;padding:0}
+
+
+/* v1.11 frontend final overrides */
+.sy-duftberater-brand {
+	margin-bottom: 18px;
+}
+.sy-duftberater-logo {
+	height: 58px;
+	width: auto;
+	display: block;
+	object-fit: contain;
+	filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+}
+.sy-duftberater-badge,
+.sy-duftberater-selection-head,
+.sy-duftberater-selection-group,
+.sy-duftberater-selection-groups,
+.sy-duftberater-meta,
+.sy-duftberater-result-reason {
+	display: none !important;
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-progress-wrap {
+	display: none;
+}
+.sy-duftberater-selection-panel {
+	margin-top: 18px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+}
+.sy-duftberater-selection-values {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.sy-duftberater-selection-chip {
+	cursor: pointer;
+	padding: 10px 14px;
+	font-size: 13px;
+}
+.sy-duftberater-start-step .sy-duftberater-step-kicker {
+	margin-bottom: 18px;
+}
+.sy-duftberater-start-hero {
+	padding: 18px 0 4px;
+}
+.sy-duftberater-start-points {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 18px;
+}
+.sy-duftberater-start-points span {
+	display: inline-flex;
+	align-items: center;
+	padding: 10px 14px;
+	border-radius: 999px;
+	background: rgba(255,255,255,0.05);
+	border: 1px solid rgba(212,175,55,0.16);
+	color: #fff2cb;
+	font-weight: 700;
+	font-size: 13px;
+}
+.sy-duftberater-actions-start {
+	border-top: 0;
+	padding-top: 8px;
+	margin-top: 10px;
+}
+.sy-duftberater-option-section-head h4 {
+	margin: 0 0 8px;
+	font-size: 24px;
+	color: #fff9ee;
+}
+.sy-duftberater-option-section-head p {
+	margin: 0 0 14px;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--sydb-text-soft);
+}
+.sy-duftberater-notes-grid .sy-duftberater-option-card {
+	min-height: 108px;
+}
+.sy-duftberater-results[data-results-container] {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+	align-items: stretch;
+	overflow: visible;
+}
+.sy-duftberater-result-card {
+	position: relative;
+	height: 100%;
+	border-radius: 26px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+.sy-duftberater-result-card.rank-1,
+.sy-duftberater-result-card.rank-2,
+.sy-duftberater-result-card.rank-3 {
+	order: initial;
+	transform: none;
+}
+.sy-duftberater-result-card.rank-1 {
+	border-color: rgba(212,175,55,0.42);
+	box-shadow: 0 22px 40px rgba(0,0,0,0.28);
+}
+.sy-duftberater-result-card::after {
+	display: none;
+}
+.sy-duftberater-result-image {
+	aspect-ratio: 4 / 4.3;
+}
+.sy-duftberater-result-body {
+	padding: 18px 18px 22px;
+}
+.sy-duftberater-result-title {
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+.sy-duftberater-result-text {
+	font-size: 16px;
+	margin-bottom: 0;
+}
+.sy-duftberater-result-topline {
+	margin-bottom: 14px;
+}
+.sy-duftberater-result-score {
+	display: inline-flex;
+}
+.sy-duftberater-score {
+	background: rgba(212,175,55,0.14);
+}
+@media (max-width: 1024px) {
+	.sy-duftberater-results[data-results-container] {
+		grid-template-columns: 1fr;
+	}
+}
+@media (max-width: 767px) {
+	.sy-duftberater-logo {
+		height: 46px;
+	}
+	.sy-duftberater-selection-values {
+		gap: 8px;
+	}
+	.sy-duftberater-start-points span {
+		font-size: 12px;
+	}
+}
+
+
+.sy-duftberater-selection-panel-result {
+	margin: 0 0 18px;
+}
+
+.sy-duftberater-results[data-results-container] {
+	align-items: stretch;
+}
+
+.sy-duftberater-result-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.sy-duftberater-result-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+}
+
+.sy-duftberater-result-actions {
+	margin-top: auto;
+	padding-top: 18px;
+}
+
+.sy-duftberater-result-actions .sy-duftberater-btn {
+	width: 100%;
+}
+
+
+.sy-duftberater-wrap[data-theme="light"] {
+	--sydb-bg: #f6f1e7;
+	--sydb-surface: rgba(255, 255, 255, 0.78);
+	--sydb-surface-strong: rgba(255, 255, 255, 0.96);
+	--sydb-border: rgba(160, 120, 28, 0.16);
+	--sydb-border-strong: rgba(160, 120, 28, 0.30);
+	--sydb-text: #241c12;
+	--sydb-text-soft: rgba(36, 28, 18, 0.88);
+	--sydb-text-muted: rgba(36, 28, 18, 0.64);
+	--sydb-shadow: 0 24px 60px rgba(104, 83, 32, 0.12);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-app {
+	background:
+		radial-gradient(circle at top right, rgba(212, 175, 55, 0.18), transparent 28%),
+		linear-gradient(135deg, #fffdf8 0%, #f8f3e7 56%, #efe4c8 100%);
+	color: var(--sydb-text);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-header {
+	border-bottom-color: rgba(36,28,18,0.08);
+	background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.25));
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-title,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step-title,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-title,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-title,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-group-head {
+	color: #1f170e;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-subtitle,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step-text,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-text,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-subtitle,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-text,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step-note,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-hint {
+	color: rgba(36, 28, 18, 0.72);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-panel,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-group,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-card,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-card,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-empty {
+	background: rgba(255,255,255,0.72);
+	border-color: rgba(160, 120, 28, 0.16);
+	box-shadow: 0 10px 28px rgba(104, 83, 32, 0.08);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-chip,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-usage-crumb {
+	background: rgba(212,175,55,0.10);
+	border-color: rgba(160,120,28,0.18);
+	color: #5f4305;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-bar {
+	background: rgba(36,28,18,0.10);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-btn {
+	background: rgba(255,255,255,0.86);
+	color: #1f170e;
+	border-color: rgba(160,120,28,0.20);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-btn:hover {
+	background: rgba(255,255,255,1);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-loading,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-empty {
+	color: rgba(36, 28, 18, 0.78);
+}
+
+
+/* v1.16 premium light refinements */
+.sy-duftberater-progress-wrap .sy-duftberater-selection-panel,
+.sy-duftberater-selection-panel-result {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.sy-duftberater-wrap[data-theme="light"] {
+	--sydb-bg: #f1ebdf;
+	--sydb-surface: rgba(255, 251, 245, 0.82);
+	--sydb-surface-strong: rgba(255, 252, 247, 0.94);
+	--sydb-border: rgba(177, 142, 69, 0.18);
+	--sydb-border-strong: rgba(177, 142, 69, 0.30);
+	--sydb-text: #241a10;
+	--sydb-text-soft: rgba(36, 26, 16, 0.82);
+	--sydb-text-muted: rgba(58, 46, 30, 0.68);
+	--sydb-shadow: 0 20px 44px rgba(123, 101, 58, 0.10);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-app {
+	background:
+		radial-gradient(circle at top right, rgba(205, 171, 97, 0.12), transparent 30%),
+		linear-gradient(135deg, #f3eee4 0%, #efe8db 58%, #eadfcb 100%);
+	border-color: rgba(177, 142, 69, 0.16);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-header {
+	border-bottom-color: rgba(92, 71, 37, 0.08);
+	background: linear-gradient(180deg, rgba(252,249,243,0.62), rgba(252,249,243,0.18));
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-subtitle,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step-text,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-text,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-subtitle,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-text,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step-note,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-hint {
+	color: rgba(63, 49, 30, 0.76);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-wrap {
+	padding-top: 18px;
+	padding-bottom: 14px;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-panel,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-group,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-card,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-card,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-empty,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-hint,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-loading,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-empty,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-section {
+	background: linear-gradient(180deg, rgba(255,251,245,0.88), rgba(250,245,236,0.82));
+	border-color: rgba(177, 142, 69, 0.16);
+	box-shadow: 0 10px 28px rgba(123, 101, 58, 0.07);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step[data-type="question"],
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step[data-type="result"],
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-step {
+	padding: 18px 20px 22px;
+	border-radius: 24px;
+	background: linear-gradient(180deg, rgba(255,252,247,0.78), rgba(248,242,231,0.74));
+	border: 1px solid rgba(177, 142, 69, 0.14);
+	box-shadow: 0 10px 26px rgba(123, 101, 58, 0.06);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-hero {
+	padding: 2px 2px 6px;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step-kicker,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-kicker {
+	background: rgba(210, 178, 99, 0.10);
+	border-color: rgba(177, 142, 69, 0.18);
+	color: #c6a052;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-values {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-chip,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-usage-crumb,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-chip,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-points span {
+	background: linear-gradient(180deg, rgba(255,249,240,0.95), rgba(246,237,219,0.92));
+	border-color: rgba(177, 142, 69, 0.20);
+	color: #72561d;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-bar,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-match-bar {
+	background: rgba(112, 88, 43, 0.10);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-btn {
+	background: linear-gradient(180deg, rgba(255,252,247,0.96), rgba(245,237,223,0.92));
+	color: #2a1e11;
+	border-color: rgba(177, 142, 69, 0.18);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-btn:hover {
+	background: linear-gradient(180deg, rgba(255,253,249,1), rgba(247,240,228,0.96));
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-btn-primary {
+	background: linear-gradient(135deg, #c5a157, #e8d29a);
+	color: #1e150c;
+	border-color: rgba(255,255,255,0.24);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-rank {
+	background: rgba(255,251,245,0.90);
+	border-color: rgba(177, 142, 69, 0.18);
+	color: #5f4516;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-score {
+	background: rgba(210, 178, 99, 0.12);
+	border-color: rgba(177, 142, 69, 0.20);
+	color: #9b7530;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-result-image {
+	background: #efe7d9;
+}
+
+@media (max-width: 767px) {
+	.sy-duftberater-progress-wrap .sy-duftberater-selection-panel,
+	.sy-duftberater-selection-panel-result {
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step[data-type="question"],
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step[data-type="result"],
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-step {
+		padding: 16px 14px 18px;
+		border-radius: 20px;
+	}
+}
+
+/* v1.16.1 light mode polish */
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-usage-stage .sy-duftberater-option-section-head h4,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-usage-stage .sy-duftberater-option-section-head p,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-usage-stage .sy-duftberater-option-section-head,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-usage-stage .sy-duftberater-option-section-head * {
+	color: #3d2b16 !important;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-wrap .sy-duftberater-selection-panel,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-panel-result {
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-values,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-chips,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-points {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-actions .sy-duftberater-btn,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-actions .sy-duftberater-btn[data-action="prev"] {
+	background: linear-gradient(135deg, #c5a157, #e8d29a);
+	color: #1e150c;
+	border-color: rgba(255,255,255,0.24);
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-actions .sy-duftberater-btn:hover,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-actions .sy-duftberater-btn[data-action="prev"]:hover {
+	background: linear-gradient(135deg, #cfab61, #eddcab);
+}
+
+@media (max-width: 767px) {
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-wrap .sy-duftberater-selection-panel,
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-panel-result {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-values,
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-selection-chips,
+	.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-points {
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+}
+
+.sy-duftberater-required{color:var(--sydb-accent);font-weight:700;}
+
+/* v1.20 multilingual, icon answers and RTL support */
+.sy-duftberater-language-step .sy-duftberater-step-head,
+.sy-duftberater-welcome-step .sy-duftberater-welcome-card {
+  text-align: inherit;
+}
+.sy-duftberater-language-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.sy-duftberater-language-card {
+  appearance: none;
+  border: 1px solid rgba(212,175,55,.35);
+  border-radius: 24px;
+  min-height: 160px;
+  padding: 24px;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(212,175,55,.06));
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+}
+.sy-duftberater-language-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sy-accent);
+  box-shadow: 0 18px 40px rgba(0,0,0,.14);
+}
+.sy-duftberater-language-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212,175,55,.18);
+  border: 1px solid rgba(212,175,55,.35);
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+.sy-duftberater-language-name {
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-weight: 900;
+}
+.sy-duftberater-language-sub {
+  opacity: .72;
+  font-weight: 700;
+}
+.sy-duftberater-welcome-card {
+  padding: clamp(28px, 5vw, 54px);
+  border-radius: 28px;
+  border: 1px solid rgba(212,175,55,.25);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(212,175,55,.16), transparent 28%),
+    linear-gradient(145deg, rgba(255,255,255,.08), rgba(212,175,55,.05));
+  box-shadow: 0 26px 70px rgba(0,0,0,.12);
+}
+.sy-duftberater-welcome-badges {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:22px 0 26px;
+}
+.sy-duftberater-welcome-badges span {
+  border:1px solid rgba(212,175,55,.32);
+  background:rgba(212,175,55,.08);
+  border-radius:999px;
+  padding:10px 16px;
+  font-weight:800;
+  font-size:.9rem;
+}
+.sy-duftberater-option-card {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+.sy-duftberater-option-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(212,175,55,.12);
+  border: 1px solid rgba(212,175,55,.28);
+}
+.sy-duftberater-option-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sy-duftberater-option-icon-placeholder {
+  font-weight: 900;
+  color: var(--sy-accent);
+  font-size: 1.1rem;
+}
+.sy-duftberater-option-card .sy-duftberater-check {
+  grid-column: 3;
+  grid-row: 1;
+}
+.sy-duftberater-option-card .sy-duftberater-option-icon-wrap {
+  grid-column: 1;
+  grid-row: 1;
+}
+.sy-duftberater-option-card .sy-duftberater-option-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+.sy-duftberater-app.is-rtl {
+  direction: rtl;
+  text-align: right;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card {
+  align-items: flex-end;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card {
+  grid-template-columns: auto 1fr auto;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-check {
+  grid-column: 1;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-option-icon-wrap {
+  grid-column: 3;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-option-copy {
+  grid-column: 2;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-actions {
+  direction: rtl;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-results {
+  direction: rtl;
+}
+.sy-duftberater-theme-light .sy-duftberater-language-card,
+.sy-duftberater-theme-light .sy-duftberater-welcome-card {
+  background: linear-gradient(145deg, #fffaf0, #f5ecdc);
+  color: #17120c;
+  box-shadow: 0 18px 50px rgba(106,78,28,.08);
+}
+.sy-duftberater-theme-light .sy-duftberater-option-icon-wrap {
+  background: #f4ead8;
+}
+@media (max-width: 760px) {
+  .sy-duftberater-language-grid {
+    grid-template-columns: 1fr;
+  }
+  .sy-duftberater-option-card {
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+/* v1.20.1 design restore: keep old premium dark/light layout while multilingual stays active */
+.sy-duftberater-progress-meta,
+.sy-duftberater-progress-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 12px;
+	font-size: 15px;
+	color: var(--sydb-text-soft);
+}
+.sy-duftberater-progress-track,
+.sy-duftberater-progress-bar {
+	position: relative;
+	width: 100%;
+	height: 10px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	overflow: hidden;
+}
+.sy-duftberater-progress-track .sy-duftberater-progress-fill,
+.sy-duftberater-progress-bar .sy-duftberater-progress-fill {
+	position: absolute;
+	inset: 0 auto 0 0;
+	display: block;
+	height: 100%;
+	width: 0%;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #b8922d 0%, #efd98d 100%);
+	transition: width 260ms ease;
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-progress-wrap {
+	display: none;
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-content {
+	padding-top: 12px;
+}
+
+/* restore answer cards: no broken full-height progress/icon overlays */
+.sy-duftberater-option-card {
+	display: flex !important;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 14px;
+	padding: 18px 68px 18px 20px;
+}
+.sy-duftberater-option-card .sy-duftberater-check {
+	position: absolute;
+	top: 50%;
+	right: 18px;
+	left: auto;
+	transform: translateY(-50%);
+	grid-column: auto;
+	grid-row: auto;
+	flex: 0 0 auto;
+}
+.sy-duftberater-option-card .sy-duftberater-option-icon-wrap {
+	position: relative;
+	z-index: 1;
+	width: 44px;
+	height: 44px;
+	min-width: 44px;
+	max-width: 44px;
+	min-height: 44px;
+	max-height: 44px;
+	border-radius: 14px;
+	grid-column: auto;
+	grid-row: auto;
+	flex: 0 0 44px;
+}
+.sy-duftberater-option-card .sy-duftberater-option-copy {
+	grid-column: auto;
+	grid-row: auto;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.sy-duftberater-option-icon-placeholder {
+	color: var(--sydb-accent, #d4af37);
+}
+.sy-duftberater-option-card:focus-visible,
+.sy-duftberater-language-card:focus-visible,
+.sy-duftberater-btn:focus-visible {
+	outline: 3px solid rgba(212,175,55,.34);
+	outline-offset: 3px;
+}
+
+/* premium language + welcome steps in same old design language */
+.sy-duftberater-language-step,
+.sy-duftberater-welcome-step {
+	padding: 0;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+}
+.sy-duftberater-language-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+	margin-top: 26px;
+}
+.sy-duftberater-language-card {
+	min-height: 150px;
+	border-radius: 24px;
+	padding: 24px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+	border: 1px solid rgba(212,175,55,.22);
+	color: #fff6df;
+	box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+}
+.sy-duftberater-language-card:hover {
+	transform: translateY(-3px);
+	border-color: rgba(212,175,55,.48);
+	box-shadow: 0 18px 38px rgba(0,0,0,.22);
+}
+.sy-duftberater-language-icon {
+	width: 52px;
+	height: 52px;
+	border-radius: 16px;
+	background: rgba(212,175,55,.10);
+	border-color: rgba(212,175,55,.28);
+	color: #ffe7a6;
+}
+.sy-duftberater-language-name {
+	font-size: 24px;
+	line-height: 1.15;
+	font-weight: 900;
+	color: #fff8eb;
+}
+.sy-duftberater-language-sub {
+	color: rgba(245,241,232,.72);
+	font-size: 13px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+.sy-duftberater-welcome-card {
+	padding: 18px 0 4px;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+}
+.sy-duftberater-welcome-badges {
+	margin: 18px 0 26px;
+}
+.sy-duftberater-welcome-badges span {
+	background: rgba(255,255,255,0.05);
+	border: 1px solid rgba(212,175,55,0.16);
+	color: #fff2cb;
+}
+
+/* RTL clean alignment without changing the old layout */
+.sy-duftberater-app.is-rtl {
+	direction: rtl;
+	text-align: right;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card {
+	text-align: right;
+	padding: 18px 20px 18px 68px;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-check {
+	left: 18px;
+	right: auto;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card {
+	align-items: flex-end;
+	text-align: right;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-values,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-chips,
+.sy-duftberater-app.is-rtl .sy-duftberater-start-points,
+.sy-duftberater-app.is-rtl .sy-duftberater-welcome-badges {
+	direction: rtl;
+	justify-content: flex-start;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-results[data-results-container] {
+	direction: rtl;
+}
+
+/* light mode parity with v1.16/v1.19 */
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-track,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-progress-bar {
+	background: rgba(112, 88, 43, 0.10);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-card {
+	background: linear-gradient(180deg, rgba(255,251,245,0.88), rgba(250,245,236,0.82));
+	border-color: rgba(177, 142, 69, 0.16);
+	box-shadow: 0 10px 28px rgba(123, 101, 58, 0.07);
+	color: #241a10;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-card:hover {
+	box-shadow: 0 16px 34px rgba(123, 101, 58, 0.12);
+	border-color: rgba(177, 142, 69, 0.30);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-icon,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-icon-wrap {
+	background: linear-gradient(180deg, rgba(255,249,240,0.95), rgba(246,237,219,0.92));
+	border-color: rgba(177, 142, 69, 0.20);
+	color: #72561d;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-name {
+	color: #1f170e;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-sub {
+	color: rgba(63, 49, 30, 0.66);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-welcome-badges span {
+	background: linear-gradient(180deg, rgba(255,249,240,0.95), rgba(246,237,219,0.92));
+	border-color: rgba(177, 142, 69, 0.20);
+	color: #72561d;
+}
+
+@media (max-width: 767px) {
+	.sy-duftberater-language-grid {
+		grid-template-columns: 1fr;
+	}
+	.sy-duftberater-option-card {
+		padding: 16px 56px 16px 16px;
+		gap: 12px;
+	}
+	.sy-duftberater-app.is-rtl .sy-duftberater-option-card {
+		padding: 16px 16px 16px 56px;
+	}
+	.sy-duftberater-option-card .sy-duftberater-option-icon-wrap {
+		width: 40px;
+		height: 40px;
+		min-width: 40px;
+		max-width: 40px;
+		min-height: 40px;
+		max-height: 40px;
+		flex-basis: 40px;
+	}
+}
+
+/* v1.20.2 language design polish + editable flag images */
+.sy-duftberater-app.is-start-view .sy-duftberater-content {
+	padding: clamp(18px, 3vw, 32px);
+	border-radius: 28px;
+	border: 1px solid rgba(212,175,55,.18);
+	background:
+		radial-gradient(circle at 10% 0%, rgba(212,175,55,.10), transparent 32%),
+		linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 22px 50px rgba(0,0,0,.18);
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-language-step,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-step {
+	padding: 0;
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-step-head,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card {
+	padding: clamp(8px, 1.4vw, 14px) 0 0;
+}
+.sy-duftberater-language-grid {
+	align-items: stretch;
+}
+.sy-duftberater-language-card {
+	position: relative;
+	isolation: isolate;
+	min-height: 168px;
+	border-radius: 28px;
+	padding: 22px;
+	background:
+		linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.018)),
+		radial-gradient(circle at 88% 12%, rgba(212,175,55,.13), transparent 38%);
+	border: 1px solid rgba(212,175,55,.25);
+	overflow: hidden;
+}
+.sy-duftberater-language-card::after {
+	content: "";
+	position: absolute;
+	inset: auto -20% -45% 35%;
+	height: 110px;
+	background: radial-gradient(circle, rgba(212,175,55,.18), transparent 66%);
+	z-index: -1;
+	transition: transform .28s ease, opacity .28s ease;
+	opacity: .75;
+}
+.sy-duftberater-language-card:hover::after {
+	transform: translateY(-10px) scale(1.05);
+	opacity: 1;
+}
+.sy-duftberater-language-flag {
+	width: 68px;
+	height: 68px;
+	border-radius: 22px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(212,175,55,.10));
+	border: 1px solid rgba(212,175,55,.30);
+	box-shadow: 0 12px 26px rgba(0,0,0,.18);
+	margin-bottom: 10px;
+}
+.sy-duftberater-language-flag img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.sy-duftberater-language-flag span {
+	font-weight: 900;
+	letter-spacing: .08em;
+	color: var(--sydb-accent, #d4af37);
+}
+.sy-duftberater-language-icon {
+	display: none !important;
+}
+.sy-duftberater-language-text {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.sy-duftberater-language-name {
+	font-size: clamp(1.22rem, 2vw, 1.7rem);
+	letter-spacing: -.02em;
+}
+.sy-duftberater-language-sub {
+	font-size: .76rem;
+	letter-spacing: .04em;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card {
+	align-items: flex-end;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card::after {
+	inset: auto 35% -45% -20%;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-app.is-start-view .sy-duftberater-content {
+	background:
+		radial-gradient(circle at 8% 0%, rgba(199,158,78,.13), transparent 34%),
+		linear-gradient(145deg, rgba(255,252,247,.96), rgba(247,239,225,.90));
+	border-color: rgba(177,142,69,.20);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 22px 50px rgba(118,91,44,.10);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-card {
+	background:
+		linear-gradient(145deg, rgba(255,255,255,.94), rgba(250,243,232,.88)),
+		radial-gradient(circle at 90% 12%, rgba(199,158,78,.12), transparent 38%);
+	border-color: rgba(177,142,69,.20);
+	box-shadow: 0 12px 30px rgba(122,95,47,.08);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-card:hover {
+	box-shadow: 0 18px 42px rgba(122,95,47,.14);
+	border-color: rgba(177,142,69,.34);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-flag {
+	background: linear-gradient(180deg, #fffaf0, #f2e4c6);
+	border-color: rgba(177,142,69,.26);
+	box-shadow: 0 10px 22px rgba(122,95,47,.10);
+}
+@media (max-width: 767px) {
+	.sy-duftberater-app.is-start-view .sy-duftberater-content {
+		padding: 18px;
+		border-radius: 22px;
+	}
+	.sy-duftberater-language-card {
+		min-height: 132px;
+		padding: 18px;
+		border-radius: 22px;
+	}
+	.sy-duftberater-language-flag {
+		width: 56px;
+		height: 56px;
+		border-radius: 18px;
+	}
+}
+
+/* v1.20.3 multilingual layout polish: proper language spacing, RTL progress, rounded start cards */
+.sy-duftberater-content {
+	border-radius: 30px;
+}
+
+.sy-duftberater-step-head {
+	margin-bottom: 24px;
+}
+
+.sy-duftberater-selection-panel {
+	margin: 24px 0 28px;
+}
+
+.sy-duftberater-options {
+	margin-top: 24px;
+}
+
+.sy-duftberater-app.is-start-view .sy-duftberater-content {
+	padding: clamp(24px, 3.4vw, 40px);
+	border-radius: 32px;
+}
+
+.sy-duftberater-app.is-start-view .sy-duftberater-language-step,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-step {
+	padding: clamp(24px, 3.2vw, 40px) !important;
+	border-radius: 30px !important;
+	border: 1px solid rgba(212,175,55,.20) !important;
+	background:
+		radial-gradient(circle at 12% 0%, rgba(212,175,55,.12), transparent 36%),
+		linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.022)) !important;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 18px 42px rgba(0,0,0,.18) !important;
+	overflow: hidden;
+}
+
+.sy-duftberater-app.is-start-view .sy-duftberater-step-head,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card {
+	padding: 0 !important;
+	margin-bottom: 28px;
+}
+
+.sy-duftberater-language-grid {
+	gap: clamp(18px, 2.4vw, 28px) !important;
+	margin-top: 34px !important;
+}
+
+.sy-duftberater-language-card {
+	border-radius: 30px !important;
+	padding: 28px !important;
+	min-height: 180px !important;
+}
+
+.sy-duftberater-language-flag {
+	border-radius: 24px !important;
+	margin-bottom: 14px !important;
+}
+
+.sy-duftberater-progress-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta {
+	direction: rtl;
+	flex-direction: row-reverse;
+}
+
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-track .sy-duftberater-progress-fill,
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-bar .sy-duftberater-progress-fill {
+	inset: 0 0 0 auto;
+}
+
+.sy-duftberater-app.is-rtl .sy-duftberater-header {
+	text-align: right;
+}
+
+.sy-duftberater-app.is-rtl .sy-duftberater-logo {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-values,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-chips,
+.sy-duftberater-app.is-rtl .sy-selected-answers-target {
+	justify-content: flex-end;
+	text-align: right;
+}
+
+.sy-duftberater-app.is-rtl .sy-duftberater-step-kicker {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-app.is-start-view .sy-duftberater-language-step,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-app.is-start-view .sy-duftberater-welcome-step {
+	background:
+		radial-gradient(circle at 12% 0%, rgba(201,159,82,.16), transparent 36%),
+		linear-gradient(145deg, rgba(255,252,247,.98), rgba(247,239,225,.94)) !important;
+	border-color: rgba(177,142,69,.20) !important;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.78), 0 20px 46px rgba(118,91,44,.10) !important;
+}
+
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-card {
+	background:
+		linear-gradient(145deg, rgba(255,255,255,.96), rgba(249,242,230,.92)),
+		radial-gradient(circle at 90% 12%, rgba(199,158,78,.14), transparent 38%) !important;
+	border-color: rgba(177,142,69,.22) !important;
+}
+
+@media (max-width: 767px) {
+	.sy-duftberater-app.is-start-view .sy-duftberater-content {
+		padding: 18px;
+		border-radius: 24px;
+	}
+	.sy-duftberater-app.is-start-view .sy-duftberater-language-step,
+	.sy-duftberater-app.is-start-view .sy-duftberater-welcome-step {
+		padding: 20px !important;
+		border-radius: 24px !important;
+	}
+	.sy-duftberater-language-card {
+		min-height: 140px !important;
+		border-radius: 24px !important;
+	}
+}
+
+/* v1.20.4 language polish: no mixed German text in RTL, better spacing */
+.sy-duftberater-hint {
+	margin-top: 18px;
+	margin-bottom: 28px;
+}
+.sy-duftberater-selection-panel + .sy-duftberater-options,
+.sy-duftberater-hint + .sy-duftberater-options,
+.sy-duftberater-options {
+	margin-top: 30px;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-hint,
+.sy-duftberater-app.is-rtl .sy-duftberater-step-text,
+.sy-duftberater-app.is-rtl .sy-duftberater-option-subtitle,
+.sy-duftberater-app.is-rtl .sy-duftberater-option-title,
+.sy-duftberater-app.is-rtl .sy-duftberater-step-note {
+	direction: rtl;
+	text-align: right;
+	unicode-bidi: plaintext;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-hint {
+	padding: 18px 22px;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-copy {
+	align-items: flex-end;
+	padding-right: 0;
+	padding-left: 8px;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card {
+	gap: 18px;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta {
+	flex-direction: row;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta > span:first-child {
+	text-align: right;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta > span:last-child {
+	text-align: left;
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-content {
+	padding-top: clamp(28px, 3.8vw, 48px);
+	padding-bottom: clamp(28px, 3.8vw, 48px);
+}
+.sy-duftberater-language-step .sy-duftberater-step-head {
+	margin-bottom: 34px;
+}
+.sy-duftberater-language-grid {
+	margin-top: 38px !important;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-hint {
+	background: linear-gradient(180deg, rgba(255,251,245,.96), rgba(248,241,229,.92));
+}
+@media (max-width: 767px) {
+	.sy-duftberater-hint {
+		margin-bottom: 22px;
+	}
+	.sy-duftberater-options {
+		margin-top: 22px;
+	}
+}
+
+
+/* v1.20.5 RTL alignment + premium spacing polish */
+.sy-duftberater-app.is-rtl .sy-duftberater-step-head,
+.sy-duftberater-app.is-rtl .sy-duftberater-step-title,
+.sy-duftberater-app.is-rtl .sy-duftberater-step-text,
+.sy-duftberater-app.is-rtl .sy-duftberater-hint {
+  text-align: right !important;
+  direction: rtl !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-grid,
+.sy-duftberater-app.is-rtl .sy-duftberater-notes-grid,
+.sy-duftberater-app.is-rtl .sy-duftberater-option-grid-usage {
+  direction: rtl !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card {
+  direction: rtl !important;
+  text-align: right !important;
+  justify-content: flex-start !important;
+  padding: 18px 20px 18px 70px !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-option-icon-wrap {
+  margin-inline-start: 0 !important;
+  margin-inline-end: 0 !important;
+  order: 0 !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-option-copy {
+  align-items: flex-start !important;
+  text-align: right !important;
+  direction: rtl !important;
+  padding-right: 0 !important;
+  padding-left: 12px !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-check {
+  left: 18px !important;
+  right: auto !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-panel,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-values,
+.sy-duftberater-app.is-rtl .sy-selected-answers-target {
+  direction: rtl !important;
+  text-align: right !important;
+  justify-content: flex-start !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-actions {
+  direction: rtl !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta {
+  direction: rtl !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta > span:first-child {
+  order: 2;
+  text-align: right !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta > span:last-child {
+  order: 1;
+  text-align: left !important;
+}
+.sy-duftberater-language-step,
+.sy-duftberater-welcome-step {
+  border-radius: 30px !important;
+}
+.sy-duftberater-app.is-start-view .sy-duftberater-language-step,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-step {
+  padding: clamp(24px, 3vw, 38px) !important;
+  border-radius: 30px !important;
+}
+.sy-duftberater-language-grid {
+  gap: clamp(18px, 2.2vw, 28px) !important;
+}
+.sy-duftberater-language-card {
+  border-radius: 26px !important;
+  min-height: 168px !important;
+}
+.sy-duftberater-language-flag,
+.sy-duftberater-language-flag img {
+  border-radius: 18px !important;
+}
+.sy-duftberater-option-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-icon-wrap,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-flag {
+  box-shadow: 0 8px 18px rgba(114, 88, 39, .10);
+}
+@media (max-width: 767px) {
+  .sy-duftberater-app.is-rtl .sy-duftberater-option-card {
+    padding: 16px 16px 16px 58px !important;
+  }
+  .sy-duftberater-app.is-rtl .sy-duftberater-option-card .sy-duftberater-check {
+    left: 14px !important;
+  }
+}
+
+/* v1.22 lead capture + PDF request */
+.sy-duftberater-lead-box {
+	margin-top: clamp(24px, 3vw, 34px);
+	padding: clamp(22px, 3vw, 34px);
+	border-radius: 26px;
+	border: 1px solid rgba(212,175,55,.28);
+	background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(212,175,55,.08));
+	box-shadow: 0 18px 45px rgba(0,0,0,.10);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-lead-box {
+	background: linear-gradient(135deg, rgba(255,252,246,.98), rgba(247,239,224,.94));
+	border-color: rgba(199,166,90,.34);
+	box-shadow: 0 18px 42px rgba(97,71,28,.10);
+}
+.sy-duftberater-lead-form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+	gap: 14px;
+	align-items: end;
+	margin-top: 18px;
+}
+.sy-duftberater-lead-form label {
+	display: grid;
+	gap: 8px;
+	font-weight: 800;
+	font-size: 13px;
+	letter-spacing: .03em;
+	text-transform: uppercase;
+}
+.sy-duftberater-lead-form input {
+	width: 100%;
+	min-height: 52px;
+	border-radius: 999px;
+	border: 1px solid rgba(212,175,55,.35);
+	background: rgba(255,255,255,.08);
+	color: inherit;
+	padding: 0 18px;
+	font-size: 16px;
+	outline: none;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-lead-form input {
+	background: #fffaf2;
+	color: #20170f;
+	border-color: rgba(191,154,74,.38);
+}
+.sy-duftberater-lead-message {
+	margin-top: 14px;
+	font-weight: 700;
+}
+.sy-duftberater-lead-message.is-success {
+	color: #2f7d32;
+}
+.sy-duftberater-lead-message.is-error {
+	color: #b42318;
+}
+.sy-duftberater-lead-message a {
+	color: inherit;
+	text-decoration: underline;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-lead-box,
+.sy-duftberater-app.is-rtl .sy-duftberater-lead-form,
+.sy-duftberater-app.is-rtl .sy-duftberater-lead-message {
+	direction: rtl;
+	text-align: right;
+}
+@media (max-width: 900px) {
+	.sy-duftberater-lead-form {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* v1.22.27 – Antwortbilder als 1:1 Bildkarten + interne Antwortseiten */
+.sy-duftberater-answer-pages {
+  display: grid;
+  gap: 16px;
+}
+.sy-duftberater-answer-page {
+  display: none !important;
+}
+.sy-duftberater-answer-page.is-active {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.sy-duftberater-option-card.sydb-answer-card {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(212,175,55,.28);
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(212,175,55,.06));
+}
+.sy-duftberater-option-card.sy-answer-mode-image_only,
+.sy-duftberater-option-card.sy-answer-mode-image_text {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+.sy-duftberater-option-card.sy-answer-mode-image_only {
+  aspect-ratio: 1 / 1;
+}
+.sy-duftberater-option-card.sy-answer-mode-image_text {
+  min-height: 0;
+}
+.sy-duftberater-option-card.sy-answer-mode-text {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  min-height: 96px;
+}
+.sy-duftberater-option-card .sydb-answer-image-wrap,
+.sy-duftberater-option-card.sy-answer-mode-image_only .sy-duftberater-option-icon-wrap,
+.sy-duftberater-option-card.sy-answer-mode-image_text .sy-duftberater-option-icon-wrap {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  border: 0;
+  background: #f8f0dc;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+.sy-duftberater-option-card .sydb-answer-image,
+.sy-duftberater-option-card.sy-answer-mode-image_only .sy-duftberater-option-icon,
+.sy-duftberater-option-card.sy-answer-mode-image_text .sy-duftberater-option-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sy-duftberater-option-card.sy-answer-mode-image_only .sy-duftberater-option-copy {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+.sy-duftberater-option-card.sy-answer-mode-image_text .sy-duftberater-option-copy {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  padding: 14px 16px 16px;
+  text-align: center;
+}
+.sy-duftberater-option-card.sy-answer-mode-text .sy-duftberater-option-copy {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+.sy-duftberater-option-card.sy-answer-mode-text .sy-duftberater-option-title,
+.sy-duftberater-option-card.sy-answer-mode-image_text .sy-duftberater-option-title {
+  color: #fff8eb;
+  font-size: 18px;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-card.sy-answer-mode-text .sy-duftberater-option-title,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-option-card.sy-answer-mode-image_text .sy-duftberater-option-title {
+  color: #2b2114;
+}
+.sy-duftberater-option-card.sy-answer-mode-image_only .sy-duftberater-check,
+.sy-duftberater-option-card.sy-answer-mode-image_text .sy-duftberater-check,
+.sy-duftberater-option-card.sy-answer-mode-text .sy-duftberater-check {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  left: auto !important;
+  transform: none !important;
+  z-index: 5;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  background: rgba(20, 20, 20, .38);
+  backdrop-filter: blur(6px);
+}
+.sy-duftberater-option-card.sy-answer-mode-image_only.is-selected,
+.sy-duftberater-option-card.sy-answer-mode-image_text.is-selected,
+.sy-duftberater-option-card.sy-answer-mode-text.is-selected {
+  border-color: rgba(212,175,55,.82);
+  box-shadow: 0 0 0 4px rgba(212,175,55,.18), 0 18px 36px rgba(0,0,0,.18);
+}
+.sy-duftberater-answer-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+.sy-duftberater-answer-page-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,175,55,.42);
+  background: linear-gradient(135deg, rgba(212,175,55,.26), rgba(255,255,255,.08));
+  color: #f7e6b0;
+  font-size: 26px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+}
+.sy-duftberater-answer-page-nav:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+.sy-duftberater-answer-page-count {
+  min-width: 68px;
+  text-align: center;
+  border-radius: 999px;
+  border: 1px solid rgba(212,175,55,.28);
+  padding: 9px 14px;
+  color: #f5e4ad;
+  font-weight: 800;
+  background: rgba(255,255,255,.05);
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-answer-page-nav {
+  background: #fff7df;
+  color: #5a4315;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-answer-page-count {
+  color: #5a4315;
+  background: #fffaf0;
+}
+@media (max-width: 680px) {
+  .sy-duftberater-answer-page.is-active {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* v1.22.28 – stabile Antwort-Bildkarten: Bilder groß, 2x2, maximal 4 pro Seite */
+.sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  align-items: stretch !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-1.is-active {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text {
+  width: 100% !important;
+  min-width: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: block !important;
+  padding: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(197, 166, 83, .34) !important;
+  background-color: #fbf4e8 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  box-shadow: 0 8px 18px rgba(80, 57, 20, .08) !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text {
+  aspect-ratio: auto !important;
+  display: grid !important;
+  grid-template-rows: auto auto !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sydb-answer-image-wrap,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-option-icon-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  transform: none !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only .sydb-answer-image-wrap,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only .sy-duftberater-option-icon-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sydb-answer-image,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-option-icon {
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  max-height: none !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: inherit !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only .sy-duftberater-option-copy {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy {
+  position: static !important;
+  display: block !important;
+  padding: 10px 12px 12px !important;
+  text-align: center !important;
+  background: #fffaf0 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  left: auto !important;
+  z-index: 4 !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background: rgba(38, 35, 28, .42) !important;
+  color: #fff !important;
+  transform: none !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check {
+  right: auto !important;
+  left: 10px !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-answer-pager {
+  margin-top: 8px !important;
+}
+@media (max-width: 680px) {
+  .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+}
+
+/* v1.22.29 – Antwortbilder: feste 2-Spalten, vollständige Bilder ohne Repeat/Crop, grüner Auswahl-Hover + Haken mittig */
+.sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  align-items: start !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-1.is-active {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(197, 166, 83, .36) !important;
+  background-color: #fffaf0 !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sydb-answer-image-wrap,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-option-icon-wrap,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card .sydb-answer-image-wrap,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-option-icon-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  max-height: none !important;
+  aspect-ratio: 1 / 1 !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  background: #fffaf0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sydb-answer-image,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-option-icon,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card .sydb-answer-image,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-option-icon {
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  max-height: none !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  border-radius: inherit !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only .sy-duftberater-option-copy,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only .sy-duftberater-option-copy {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card::after,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(16, 111, 66, 0);
+  z-index: 2;
+  pointer-events: none;
+  transition: background .18s ease, box-shadow .18s ease;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card:hover,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card:hover {
+  border-color: rgba(25, 135, 84, .75) !important;
+  box-shadow: 0 0 0 4px rgba(25, 135, 84, .12) !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card:hover::after,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card:hover::after {
+  background: rgba(25, 135, 84, .10);
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.is-selected,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.is-selected,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"],
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] {
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 5px rgba(25, 135, 84, .18) !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.is-selected::after,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.is-selected::after,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"]::after,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"]::after {
+  background: rgba(25, 135, 84, .18);
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check,
+.sy-duftberater-app.is-rtl .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check,
+.sy-duftberater-app.is-rtl .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  width: 58px !important;
+  height: 58px !important;
+  transform: translate(-50%, -50%) scale(.85) !important;
+  z-index: 5 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: #198754 !important;
+  color: #fff !important;
+  font-size: 30px !important;
+  font-weight: 900 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  box-shadow: 0 12px 28px rgba(25, 135, 84, .35) !important;
+  transition: opacity .18s ease, transform .18s ease !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.is-selected .sy-duftberater-check,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.is-selected .sy-duftberater-check,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] .sy-duftberater-check,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] .sy-duftberater-check {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+@media (max-width: 680px) {
+  .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+  .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+  .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+}
+
+
+/* v1.22.30 – Audio UX + robuster grüner Auswahlhaken auf allen Antwortkarten */
+.sy-duftberater-option-card.sydb-answer-card {
+  cursor: pointer !important;
+  position: relative !important;
+}
+.sy-duftberater-option-card.sydb-answer-card:hover,
+.sy-duftberater-option-card.sydb-answer-card:focus-visible {
+  border-color: rgba(25,135,84,.8) !important;
+  box-shadow: 0 0 0 4px rgba(25,135,84,.13) !important;
+}
+.sy-duftberater-option-card.sydb-answer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(25,135,84,0);
+  z-index: 2;
+  pointer-events: none;
+  transition: background .18s ease;
+}
+.sy-duftberater-option-card.sydb-answer-card:hover::after,
+.sy-duftberater-option-card.sydb-answer-card:focus-visible::after {
+  background: rgba(25,135,84,.10);
+}
+.sy-duftberater-option-card.sydb-answer-card.is-selected,
+.sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] {
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 5px rgba(25,135,84,.18) !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.is-selected::after,
+.sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"]::after {
+  background: rgba(25,135,84,.18) !important;
+}
+.sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check,
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card.sydb-answer-card .sy-duftberater-check {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  width: 62px !important;
+  height: 62px !important;
+  transform: translate(-50%, -50%) scale(.85) !important;
+  z-index: 6 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  background: #198754 !important;
+  color: #fff !important;
+  font-size: 32px !important;
+  font-weight: 900 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  box-shadow: 0 14px 30px rgba(25,135,84,.36) !important;
+  transition: opacity .18s ease, transform .18s ease !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.is-selected .sy-duftberater-check,
+.sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] .sy-duftberater-check {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+
+/* v1.22.31 – Header nur Logo, Step-Kicker weg, Progress-Meta als Chips, Audio/UX Fix */
+.sy-duftberater-header.sydb-logo-only-header,
+.sy-duftberater-header {
+  padding: 22px 28px 18px !important;
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+}
+.sy-duftberater-header .sy-duftberater-title,
+.sy-duftberater-header .sy-duftberater-subtitle {
+  display: none !important;
+}
+.sy-duftberater-header .sy-duftberater-brand {
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.sy-duftberater-logo {
+  max-width: 185px !important;
+  height: auto !important;
+}
+.sy-duftberater-step-kicker {
+  display: none !important;
+}
+.sy-duftberater-progress-meta {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 10px !important;
+}
+.sy-duftberater-progress-meta > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 7px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.75) !important;
+  border: 1px solid rgba(199,161,74,.28) !important;
+  color: #5c4125 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 8px 24px rgba(65,40,12,.06) !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-progress-meta {
+  direction: rtl !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.is-selected .sy-duftberater-check,
+.sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] .sy-duftberater-check,
+.sy-duftberater-usage-stage .sy-duftberater-option-card.sydb-answer-card.is-selected .sy-duftberater-check,
+.sy-duftberater-usage-stage .sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] .sy-duftberater-check {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.is-selected,
+.sy-duftberater-option-card.sydb-answer-card[aria-pressed="true"] {
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 5px rgba(25,135,84,.18) !important;
+}
+
+
+/* v1.22.32 – Language cards as full image backgrounds + welcome audio support */
+.sy-duftberater-language-card.sydb-language-bg-card {
+  position: relative !important;
+  min-height: 210px !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  border: 1px solid rgba(199,161,74,.45) !important;
+  box-shadow: 0 14px 36px rgba(50,35,12,.14) !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,.08) 42%, rgba(20,13,4,.72) 100%) !important;
+  z-index: 0 !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card:hover,
+.sy-duftberater-language-card.sydb-language-bg-card:focus-visible {
+  transform: translateY(-3px) !important;
+  border-color: #198754 !important;
+  box-shadow: 0 0 0 5px rgba(25,135,84,.18), 0 18px 42px rgba(40,30,10,.18) !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-flag,
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-sub,
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-flag img,
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-flag span {
+  display: none !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  padding: 18px 20px !important;
+  display: block !important;
+  text-align: start !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name {
+  display: inline-flex !important;
+  color: #fff7db !important;
+  font-size: clamp(22px, 3vw, 34px) !important;
+  line-height: 1.05 !important;
+  font-weight: 900 !important;
+  letter-spacing: .02em !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,.45) !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card.sydb-language-bg-card {
+  justify-content: flex-end !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  text-align: right !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-language-card.sydb-language-bg-card {
+    min-height: 170px !important;
+  }
+}
+
+
+/* v1.22.33 – FIX: language images as real full-card image layer, not CSS background */
+.sy-duftberater-language-card.sydb-language-bg-card {
+  background: #111 !important;
+  background-image: none !important;
+  min-height: 210px !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sydb-language-bg-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  z-index: 0 !important;
+  display: block !important;
+  filter: saturate(1.05) contrast(1.02) !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card::before {
+  z-index: 1 !important;
+  background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.10) 42%, rgba(20,13,4,.68) 100%) !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  z-index: 2 !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name {
+  color: #fff6d8 !important;
+  text-shadow: 0 4px 14px rgba(0,0,0,.65), 0 0 1px rgba(255,255,255,.3) !important;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-language-card.sydb-language-bg-card {
+  background: #111 !important;
+  background-image: none !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-language-card.sydb-language-bg-card { min-height: 170px !important; }
+}
+
+
+/* v1.22.36 – Bild+Text: Antworttext als halbtransparenter Platzhalter mittig über dem Bild */
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text {
+  position: relative !important;
+  display: block !important;
+  aspect-ratio: 1 / 1 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #fbf4e8 !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sydb-answer-image-wrap,
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-icon-wrap,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sydb-answer-image-wrap,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-icon-wrap,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sydb-answer-image-wrap,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-icon-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  z-index: 1 !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sydb-answer-image,
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-icon,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sydb-answer-image,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-icon,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sydb-answer-image,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-icon {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  border-radius: inherit !important;
+  opacity: 1 !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 4 !important;
+  width: auto !important;
+  max-width: 84% !important;
+  padding: 12px 18px !important;
+  border-radius: 18px !important;
+  text-align: center !important;
+  background: rgba(28, 24, 16, .58) !important;
+  border: 1px solid rgba(255, 232, 166, .55) !important;
+  color: #fff7df !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,.22) !important;
+  backdrop-filter: blur(7px) !important;
+  -webkit-backdrop-filter: blur(7px) !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title {
+  color: #fff7df !important;
+  font-size: clamp(16px, 2.1vw, 24px) !important;
+  line-height: 1.25 !important;
+  font-weight: 900 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.44) !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-subtitle,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-subtitle,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-subtitle {
+  display: none !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text:hover .sy-duftberater-option-copy,
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text:focus-visible .sy-duftberater-option-copy,
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text.is-selected .sy-duftberater-option-copy,
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text[aria-pressed="true"] .sy-duftberater-option-copy {
+  background: rgba(16, 96, 58, .70) !important;
+  border-color: rgba(198, 255, 222, .75) !important;
+}
+
+
+/* v1.22.37 – Hochformat/Fullwidth: Ergebnisse immer 3 nebeneinander + Header/Footer Optionen */
+.sy-duftberater-wrap.sydb-fullwidth {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding-left: clamp(10px, 2vw, 28px) !important;
+  padding-right: clamp(10px, 2vw, 28px) !important;
+}
+.sy-duftberater-wrap.sydb-fullwidth .sy-duftberater-app {
+  width: 100% !important;
+  max-width: none !important;
+}
+.sy-duftberater-wrap.sydb-hide-header .sy-duftberater-header,
+.sy-duftberater-wrap.sydb-hide-footer .sy-duftberater-footer {
+  display: none !important;
+}
+.sy-duftberater-footer {
+  min-height: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+.sy-duftberater-results[data-results-container],
+.sy-duftberater-step[data-type="result"] .sy-duftberater-results[data-results-container] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(10px, 1.5vw, 20px) !important;
+  align-items: stretch !important;
+  overflow: visible !important;
+}
+.sy-duftberater-results[data-results-container] .sy-duftberater-result-card {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+@media (max-width: 1024px) {
+  .sy-duftberater-results[data-results-container],
+  .sy-duftberater-step[data-type="result"] .sy-duftberater-results[data-results-container] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 720px) {
+  .sy-duftberater-results[data-results-container],
+  .sy-duftberater-step[data-type="result"] .sy-duftberater-results[data-results-container] {
+    gap: 8px !important;
+  }
+  .sy-duftberater-result-body { padding: 10px 8px 12px !important; }
+  .sy-duftberater-result-title { font-size: clamp(14px, 3.4vw, 20px) !important; line-height: 1.2 !important; }
+  .sy-duftberater-result-text { font-size: 11px !important; line-height: 1.35 !important; }
+  .sy-duftberater-result-rank, .sy-duftberater-score { font-size: 10px !important; padding: 5px 7px !important; }
+  .sy-duftberater-result-actions .sy-duftberater-btn { min-height: 38px !important; font-size: 11px !important; padding: 9px 8px !important; }
+}
+
+
+/* v1.22.39 – Zurück/Weiter immer nebeneinander und Weiter bei allen Fragen sichtbar */
+.sy-duftberater-actions.sydb-question-actions,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-actions {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+}
+.sy-duftberater-actions.sydb-question-actions .sy-duftberater-btn,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-actions .sy-duftberater-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.sy-duftberater-actions.sydb-question-actions .sy-duftberater-step-note,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-actions .sy-duftberater-step-note {
+  grid-column: 1 / -1 !important;
+  order: 3 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-actions.sydb-question-actions,
+.sy-duftberater-app.is-rtl .sy-duftberater-step[data-type="question"] .sy-duftberater-actions {
+  direction: rtl !important;
+}
+@media (max-width: 420px) {
+  .sy-duftberater-actions.sydb-question-actions,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .sy-duftberater-actions.sydb-question-actions .sy-duftberater-btn,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-actions .sy-duftberater-btn {
+    min-height: 46px !important;
+    padding: 12px 10px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* v1.27.4 – Quiz flow refinements */
+.sy-duftberater-language-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+  max-width: 760px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card {
+  width: 100% !important;
+  min-height: 170px !important;
+}
+.sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card:nth-child(3),
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card:nth-child(3) {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+  width: min(100%, calc(50% - 8px)) !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card:nth-child(3),
+  .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card:nth-child(3) {
+    width: 100% !important;
+  }
+}
+.sy-duftberater-completion-popup {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 999999 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+}
+.sy-duftberater-completion-popup.is-open {
+  display: flex !important;
+}
+.sy-duftberater-completion-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(28, 20, 12, .62) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+.sy-duftberater-completion-dialog {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(560px, 92vw) !important;
+  border-radius: 28px !important;
+  border: 1px solid rgba(201, 175, 127, .65) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(229,221,208,.95)) !important;
+  box-shadow: 0 34px 90px rgba(0,0,0,.32) !important;
+  padding: clamp(24px, 4vw, 38px) !important;
+  text-align: center !important;
+  color: #705a42 !important;
+}
+.sy-duftberater-completion-logo-wrap img {
+  display: block !important;
+  max-width: 220px !important;
+  max-height: 92px !important;
+  object-fit: contain !important;
+  margin: 0 auto 18px !important;
+}
+.sy-duftberater-completion-text {
+  margin: 0 0 24px !important;
+  font-size: clamp(17px, 2.2vw, 22px) !important;
+  line-height: 1.55 !important;
+  font-weight: 700 !important;
+  color: #705a42 !important;
+}
+.sy-duftberater-completion-popup.is-rtl .sy-duftberater-completion-dialog {
+  direction: rtl !important;
+}
+
+
+/* v1.27.7 – language start screen cleanup: compact vertical flag buttons */
+.sy-duftberater-language-grid {
+  max-width: 520px !important;
+  gap: 14px !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card {
+  min-height: 96px !important;
+  background: #f8f3ea !important;
+  border: 1px solid rgba(112,90,66,.28) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 22px rgba(64,45,22,.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 18px !important;
+  padding: 14px 18px !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card::before {
+  display: none !important;
+  content: none !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card:hover,
+.sy-duftberater-language-card.sydb-language-bg-card:focus-visible {
+  transform: translateY(-1px) !important;
+  border-color: rgba(112,90,66,.55) !important;
+  box-shadow: 0 0 0 4px rgba(112,90,66,.10), 0 10px 24px rgba(64,45,22,.12) !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sydb-language-bg-img {
+  position: relative !important;
+  inset: auto !important;
+  width: 108px !important;
+  min-width: 108px !important;
+  height: 68px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(112,90,66,.22) !important;
+  box-shadow: 0 4px 12px rgba(64,45,22,.08) !important;
+  z-index: 1 !important;
+  display: block !important;
+  filter: none !important;
+  background: #fff !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  position: relative !important;
+  z-index: 2 !important;
+  width: auto !important;
+  padding: 0 !important;
+  text-align: start !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  flex: 1 1 auto !important;
+}
+.sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name {
+  color: #705a42 !important;
+  text-shadow: none !important;
+  font-size: clamp(22px, 2.5vw, 30px) !important;
+  line-height: 1.1 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card.sydb-language-bg-card {
+  justify-content: flex-end !important;
+  flex-direction: row-reverse !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  text-align: right !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-language-grid {
+    max-width: 100% !important;
+  }
+  .sy-duftberater-language-card.sydb-language-bg-card {
+    min-height: 88px !important;
+    padding: 12px 14px !important;
+    gap: 12px !important;
+  }
+  .sy-duftberater-language-card.sydb-language-bg-card .sydb-language-bg-img {
+    width: 84px !important;
+    min-width: 84px !important;
+    height: 54px !important;
+  }
+  .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name {
+    font-size: 24px !important;
+  }
+}
+
+
+/* v1.27.8 – first language screen color harmony + readability */
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card {
+  background: linear-gradient(135deg, #fbf7ef 0%, #efe3d1 100%) !important;
+  border: 1px solid rgba(112, 90, 66, 0.30) !important;
+  box-shadow: 0 10px 24px rgba(112, 90, 66, 0.10) !important;
+  min-height: 148px !important;
+  border-radius: 20px !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 18px 22px !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card::before {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card:hover,
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card:focus-visible {
+  background: linear-gradient(135deg, #fffaf2 0%, #ead9c0 100%) !important;
+  border-color: rgba(112, 90, 66, 0.55) !important;
+  box-shadow: 0 0 0 4px rgba(112, 90, 66, 0.10), 0 12px 26px rgba(112, 90, 66, 0.14) !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card .sydb-language-bg-img {
+  position: relative !important;
+  inset: auto !important;
+  width: 112px !important;
+  min-width: 112px !important;
+  height: 70px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(112, 90, 66, 0.16) !important;
+  box-shadow: 0 6px 14px rgba(112, 90, 66, 0.10) !important;
+  background: #ffffff !important;
+  margin: 0 auto !important;
+  filter: none !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  position: relative !important;
+  z-index: 2 !important;
+  width: auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name {
+  color: #705a42 !important;
+  text-shadow: none !important;
+  font-size: clamp(22px, 2.7vw, 34px) !important;
+  line-height: 1.1 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card {
+  flex-direction: column !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text {
+  text-align: center !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card {
+    min-height: 130px !important;
+    gap: 10px !important;
+    padding: 14px 16px !important;
+  }
+  .sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card .sydb-language-bg-img {
+    width: 94px !important;
+    min-width: 94px !important;
+    height: 58px !important;
+  }
+  .sy-duftberater-language-step .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name {
+    font-size: 24px !important;
+  }
+}
+
+
+/* v1.27.9 – force all language cards to always look like the light/hover design */
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card,
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card:hover,
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card:focus-visible,
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card:active {
+  background: linear-gradient(135deg, #fffaf2 0%, #ead9c0 100%) !important;
+  border: 1px solid rgba(112, 90, 66, 0.42) !important;
+  box-shadow: 0 0 0 2px rgba(112, 90, 66, 0.06), 0 12px 26px rgba(112, 90, 66, 0.14) !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card::before,
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-text,
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-name,
+.sy-duftberater-language-step .sy-duftberater-language-grid .sy-duftberater-language-card.sydb-language-bg-card .sy-duftberater-language-sub {
+  color: #705a42 !important;
+  text-shadow: none !important;
+}
+
+
+/* v1.28.3 – FIX: Antwort-Kacheln wieder stabil als 2x2 Grid */
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card:nth-child(3),
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card:nth-child(3) {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+  width: min(100%, calc(50% - 8px)) !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+@media (max-width: 680px) {
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card:nth-child(3) {
+    width: min(100%, calc(50% - 5px)) !important;
+  }
+}
+
+
+/* v1.28.4 – HARD FIX: Antwortkarten nicht mehr untereinander/stufenartig, sondern sauberes 2x2 Layout */
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: visible !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page {
+  display: none !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 18px !important;
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card {
+  flex: 0 1 calc(50% - 9px) !important;
+  width: calc(50% - 9px) !important;
+  max-width: calc(50% - 9px) !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  grid-column: auto !important;
+  justify-self: auto !important;
+  align-self: stretch !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-1.is-active > .sy-duftberater-option-card.sydb-answer-card,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-1 > .sy-duftberater-option-card.sydb-answer-card {
+  flex-basis: min(100%, 560px) !important;
+  width: min(100%, 560px) !important;
+  max-width: min(100%, 560px) !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3) {
+  flex-basis: calc(50% - 9px) !important;
+  width: calc(50% - 9px) !important;
+  max-width: calc(50% - 9px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text {
+  aspect-ratio: 1 / 1 !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+    gap: 10px !important;
+  }
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3) {
+    flex-basis: calc(50% - 5px) !important;
+    width: calc(50% - 5px) !important;
+    max-width: calc(50% - 5px) !important;
+  }
+}
+@media (max-width: 420px) {
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3) {
+    flex-basis: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+
+/* v1.28.5 – FINAL FIX: Antwortkarten wirklich als feste 2-Spalten-Kacheln */
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page {
+  display: none !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-grid.is-active,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  gap: 18px !important;
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  justify-items: stretch !important;
+  align-items: stretch !important;
+  place-items: stretch !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active > .sy-duftberater-option-card.sydb-answer-card,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid > .sy-duftberater-option-card.sydb-answer-card,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage > .sy-duftberater-option-card.sydb-answer-card {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  flex: none !important;
+  flex-basis: auto !important;
+  grid-column: auto !important;
+  justify-self: stretch !important;
+  align-self: stretch !important;
+  transform: none !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-1.is-active,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-1,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage.sydb-answer-count-1 {
+  grid-template-columns: minmax(0, min(100%, 560px)) !important;
+  justify-content: center !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3) {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+  width: min(100%, calc(50% - 9px)) !important;
+  max-width: calc(50% - 9px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_only,
+.sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text {
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-grid.is-active,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3) {
+    width: min(100%, calc(50% - 5px)) !important;
+    max-width: calc(50% - 5px) !important;
+  }
+}
+@media (max-width: 420px) {
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.is-active,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-option-grid.is-active,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid,
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage {
+    grid-template-columns: 1fr !important;
+  }
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-answer-pages .sy-duftberater-answer-page.sydb-answer-count-3.is-active > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3),
+  .sy-duftberater-step[data-type="question"] .sy-duftberater-usage-stage.is-active .sy-duftberater-option-grid-usage.sydb-answer-count-3 > .sy-duftberater-option-card.sydb-answer-card:nth-child(3) {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+/* v1.28.14 – selected answers one-line, compact overlay text, separate top logo band */
+.sy-duftberater-header.sydb-logo-only-header,
+.sy-duftberater-header {
+  width: min(560px, calc(100% - 28px)) !important;
+  margin: 0 auto 18px !important;
+  padding: 18px 24px !important;
+  justify-content: center !important;
+  text-align: center !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(250,246,238,.92)) !important;
+  border: 1px solid rgba(199,161,74,.26) !important;
+  border-radius: 0 0 24px 24px !important;
+  box-shadow: 0 10px 28px rgba(82,59,24,.06) !important;
+}
+.sy-duftberater-header .sy-duftberater-brand {
+  width: 100% !important;
+  justify-content: center !important;
+}
+.sy-duftberater-logo {
+  max-width: clamp(180px, 26vw, 300px) !important;
+  margin: 0 auto !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-logo {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.sy-duftberater-progress-wrap {
+  margin-top: 0 !important;
+}
+
+.sy-duftberater-selection-panel,
+.sy-duftberater-selection-panel-result {
+  overflow: hidden !important;
+}
+.sy-duftberater-selection-values,
+.sy-duftberater-selection-chips,
+.sy-selected-answers-target {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: nowrap !important;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.sy-duftberater-selection-values::-webkit-scrollbar,
+.sy-duftberater-selection-chips::-webkit-scrollbar,
+.sy-selected-answers-target::-webkit-scrollbar {
+  height: 6px;
+}
+.sy-duftberater-selection-values::-webkit-scrollbar-thumb,
+.sy-duftberater-selection-chips::-webkit-scrollbar-thumb,
+.sy-selected-answers-target::-webkit-scrollbar-thumb {
+  background: rgba(177, 142, 69, 0.30);
+  border-radius: 999px;
+}
+.sy-duftberater-selection-chip,
+.sy-duftberater-usage-crumb,
+.sy-duftberater-chip {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-values,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-chips,
+.sy-duftberater-app.is-rtl .sy-selected-answers-target {
+  justify-content: flex-start !important;
+}
+
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy {
+  width: auto !important;
+  min-width: min(180px, 58%) !important;
+  max-width: 82% !important;
+  padding: 10px 16px !important;
+  border-radius: 22px !important;
+}
+.sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+.sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+.sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title {
+  display: block !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  font-size: clamp(12px, 1.35vw, 20px) !important;
+  line-height: 1.18 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sy-duftberater-app.is-rtl .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+.sy-duftberater-app.is-rtl .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+.sy-duftberater-app.is-rtl .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title {
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+@media (max-width: 980px) {
+  .sy-duftberater-header.sydb-logo-only-header,
+  .sy-duftberater-header {
+    width: calc(100% - 18px) !important;
+    border-radius: 0 0 18px 18px !important;
+    padding: 14px 18px !important;
+  }
+  .sy-duftberater-selection-values,
+  .sy-duftberater-selection-chips,
+  .sy-selected-answers-target {
+    gap: 8px !important;
+  }
+  .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy,
+  .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy,
+  .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-copy {
+    min-width: min(150px, 62%) !important;
+    max-width: 86% !important;
+    padding: 8px 12px !important;
+  }
+  .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+  .sy-duftberater-answer-pages .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title,
+  .sy-duftberater-usage-stage.is-active .sy-duftberater-option-card.sydb-answer-card.sy-answer-mode-image_text .sy-duftberater-option-title {
+    font-size: clamp(11px, 2.2vw, 16px) !important;
+  }
+}
+
+/* v1.28.15 – real logo area even when plugin header is disabled + selected answers always inline */
+.sydb-top-logo-bar {
+  width: min(560px, calc(100% - 28px)) !important;
+  margin: 0 auto 18px !important;
+  padding: 18px 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(250,246,238,.94)) !important;
+  border: 1px solid rgba(199,161,74,.28) !important;
+  border-top: 0 !important;
+  border-radius: 0 0 24px 24px !important;
+  box-shadow: 0 12px 30px rgba(82,59,24,.08) !important;
+}
+.sydb-top-logo {
+  display: block !important;
+  width: auto !important;
+  max-width: clamp(190px, 28vw, 320px) !important;
+  max-height: 92px !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+.sy-duftberater-wrap.sydb-hide-header .sydb-top-logo-bar,
+.sydb-top-logo-bar {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.sy-duftberater-header.sydb-logo-only-header {
+  display: none !important;
+}
+.sy-duftberater-app.is-start-view .sydb-top-logo-bar {
+  display: flex !important;
+}
+
+.sy-duftberater-usage-crumbs[data-usage-crumbs] {
+  display: none !important;
+}
+.sy-duftberater-selection-panel,
+.sy-duftberater-selection-panel-result {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+.sy-duftberater-selection-values,
+.sy-duftberater-selection-chips,
+.sy-selected-answers-target,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-values,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-chips,
+.sy-duftberater-app.is-rtl .sy-selected-answers-target {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: clamp(5px, .7vw, 10px) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important;
+}
+.sy-duftberater-selection-chip,
+.sy-duftberater-usage-crumb,
+.sy-duftberater-chip,
+.sy-duftberater-app.is-rtl .sy-duftberater-selection-chip,
+.sy-duftberater-app.is-rtl .sy-duftberater-usage-crumb,
+.sy-duftberater-app.is-rtl .sy-duftberater-chip {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  font-size: clamp(9px, .78vw, 13px) !important;
+  line-height: 1.1 !important;
+  padding: clamp(6px, .55vw, 10px) clamp(8px, .85vw, 14px) !important;
+}
+.sy-duftberater-selection-empty {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 980px) {
+  .sydb-top-logo-bar {
+    width: calc(100% - 18px) !important;
+    margin-bottom: 14px !important;
+    padding: 13px 16px !important;
+    border-radius: 0 0 18px 18px !important;
+  }
+  .sydb-top-logo {
+    max-width: clamp(170px, 50vw, 270px) !important;
+    max-height: 76px !important;
+  }
+  .sy-duftberater-selection-chip,
+  .sy-duftberater-usage-crumb,
+  .sy-duftberater-chip {
+    font-size: clamp(9px, 2.2vw, 12px) !important;
+  }
+}
+
+
+/* v1.28.16 – modern rounded container and clickable frontend logo polish */
+.sy-duftberater-wrap {
+  padding-left: clamp(10px, 2vw, 22px) !important;
+  padding-right: clamp(10px, 2vw, 22px) !important;
+}
+.sy-duftberater-app {
+  border-radius: clamp(22px, 3vw, 34px) !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-app {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(218,184,110,.18), transparent 30%),
+    linear-gradient(145deg, #f8f2e7 0%, #efe6d5 58%, #e7dcc6 100%) !important;
+  border-color: rgba(190, 151, 72, .22) !important;
+  box-shadow: 0 24px 54px rgba(86,62,26,.12) !important;
+}
+.sydb-top-logo-bar {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 clamp(18px, 2.2vw, 28px) !important;
+  padding: clamp(18px, 2.4vw, 30px) clamp(18px, 3vw, 42px) !important;
+  border-radius: 0 0 clamp(24px, 3vw, 38px) clamp(24px, 3vw, 38px) !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(253,249,240,.92)) !important;
+  box-shadow: inset 0 -1px 0 rgba(199,161,74,.22), 0 12px 30px rgba(88,61,20,.06) !important;
+}
+.sydb-top-logo-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  line-height: 0 !important;
+  border-radius: 18px !important;
+  transition: transform .18s ease, opacity .18s ease !important;
+}
+.sydb-top-logo-link:hover,
+.sydb-top-logo-link:focus-visible {
+  transform: translateY(-1px) !important;
+  opacity: .92 !important;
+  outline: none !important;
+}
+.sydb-top-logo {
+  max-width: clamp(210px, 30vw, 380px) !important;
+  max-height: 96px !important;
+}
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step[data-type="question"],
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-step[data-type="result"],
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-start-step,
+.sy-duftberater-wrap[data-theme="light"] .sy-duftberater-welcome-card {
+  border-radius: clamp(24px, 2.6vw, 34px) !important;
+  background: linear-gradient(180deg, rgba(255,253,248,.86), rgba(249,244,235,.80)) !important;
+  border: 1px solid rgba(177,142,69,.18) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.70), 0 16px 34px rgba(101,78,39,.07) !important;
+}
+.sy-duftberater-content {
+  padding-left: clamp(16px, 2.2vw, 32px) !important;
+  padding-right: clamp(16px, 2.2vw, 32px) !important;
+  padding-bottom: clamp(22px, 2.6vw, 34px) !important;
+}
+.sy-duftberater-progress-wrap {
+  padding-left: clamp(16px, 2.2vw, 32px) !important;
+  padding-right: clamp(16px, 2.2vw, 32px) !important;
+}
+.sy-duftberater-wrap.sydb-fullwidth {
+  overflow: visible !important;
+}
+@media (max-width: 720px) {
+  .sy-duftberater-wrap {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .sydb-top-logo-bar {
+    padding: 16px 14px !important;
+    border-radius: 0 0 24px 24px !important;
+  }
+  .sydb-top-logo {
+    max-width: min(260px, 70vw) !important;
+    max-height: 72px !important;
+  }
+  .sy-duftberater-content,
+  .sy-duftberater-progress-wrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+
+/* v1.28.17 – same-tab logo link + welcome headline inside frame */
+.sydb-top-logo-link,
+.sydb-top-logo-link:visited {
+  cursor: pointer !important;
+}
+.sy-duftberater-welcome-card {
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+.sy-duftberater-welcome-card .sy-duftberater-step-title,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-title {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  font-size: clamp(24px, 2.8vw, 38px) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.02em !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  text-wrap: balance;
+}
+.sy-duftberater-welcome-card .sy-duftberater-step-text,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-text {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+@media (max-width: 980px) {
+  .sy-duftberater-welcome-card .sy-duftberater-step-title,
+  .sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-title {
+    font-size: clamp(22px, 4.2vw, 32px) !important;
+    line-height: 1.15 !important;
+  }
+}
+@media (max-width: 560px) {
+  .sy-duftberater-welcome-card .sy-duftberater-step-title,
+  .sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-title {
+    font-size: clamp(20px, 7vw, 28px) !important;
+  }
+  .sy-duftberater-welcome-card {
+    padding-left: clamp(18px, 5vw, 26px) !important;
+    padding-right: clamp(18px, 5vw, 26px) !important;
+  }
+}
+
+/* v1.28.18 – welcome headline no clipping */
+.sy-duftberater-welcome-card,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card {
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  padding-left: clamp(26px, 3.2vw, 46px) !important;
+  padding-right: clamp(26px, 3.2vw, 46px) !important;
+}
+.sy-duftberater-welcome-card .sy-duftberater-step-head,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-head {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.sy-duftberater-welcome-card .sy-duftberater-step-title,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-title {
+  overflow: visible !important;
+  max-width: 100% !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  padding-top: 3px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  letter-spacing: -0.01em !important;
+  font-size: clamp(23px, 2.45vw, 34px) !important;
+  line-height: 1.22 !important;
+  text-wrap: balance !important;
+}
+.sy-duftberater-welcome-card .sy-duftberater-step-text,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-text,
+.sy-duftberater-welcome-card .sy-duftberater-welcome-badges,
+.sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-welcome-badges {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 980px) {
+  .sy-duftberater-welcome-card,
+  .sy-duftberater-app.is-start-view .sy-duftberater-welcome-card {
+    padding-left: clamp(22px, 4vw, 34px) !important;
+    padding-right: clamp(22px, 4vw, 34px) !important;
+  }
+  .sy-duftberater-welcome-card .sy-duftberater-step-title,
+  .sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-title {
+    font-size: clamp(21px, 3.2vw, 30px) !important;
+    line-height: 1.24 !important;
+  }
+}
+@media (max-width: 560px) {
+  .sy-duftberater-welcome-card,
+  .sy-duftberater-app.is-start-view .sy-duftberater-welcome-card {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .sy-duftberater-welcome-card .sy-duftberater-step-title,
+  .sy-duftberater-app.is-start-view .sy-duftberater-welcome-card .sy-duftberater-step-title {
+    font-size: clamp(20px, 6.2vw, 26px) !important;
+  }
+}
+
+
+/* v1.28.19 – Duftnoten-Erklärtexte ausblenden */
+.sy-duftberater-step[data-key="duftnoten"] .sy-duftberater-step-text,
+.sy-duftberater-step[data-key="duftnoten"] .sy-duftberater-hint {
+  display: none !important;
+}
+.sy-duftberater-step[data-key="duftnoten"] .sy-duftberater-step-head {
+  margin-bottom: 18px !important;
+}
