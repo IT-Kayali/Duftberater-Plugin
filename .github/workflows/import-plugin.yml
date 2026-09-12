@@ -1,0 +1,94 @@
+name: Import Duftberater plugin source
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/import-plugin.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Rebuild source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat \
+            .import/v1.28.30/part00.b64 \
+            .import/v1.28.30/part01.b64 \
+            .import/v1.28.30/part02.b64 \
+            .import/v1.28.30/part03.b64 \
+            .import/v1.28.30/part04-fixed.b64 \
+            .import/v1.28.30/part05.b64 \
+            .import/v1.28.30/part06.b64 \
+            .import/v1.28.30/part07.b64 \
+            .import/v1.28.30/part08.b64 \
+            .import/v1.28.30/part09.b64 \
+            .import/v1.28.30/part10.b64 \
+            .import/v1.28.30/part11.b64 \
+            | tr -d '\r\n ' \
+            | base64 --decode > /tmp/sy-duftberater-v1.28.30-source.zip
+
+          test "$(stat -c%s /tmp/sy-duftberater-v1.28.30-source.zip)" -gt 100000
+          unzip -t /tmp/sy-duftberater-v1.28.30-source.zip
+
+      - name: Extract plugin
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sy-duftberater-import
+          mkdir -p /tmp/sy-duftberater-import
+          unzip -o /tmp/sy-duftberater-v1.28.30-source.zip -d /tmp/sy-duftberater-import
+          test -f /tmp/sy-duftberater-import/sy-duftberater/sy-duftberater.php
+          test -f /tmp/sy-duftberater-import/sy-duftberater/includes/class-sy-duftberater.php
+          test -f /tmp/sy-duftberater-import/sy-duftberater/assets/js/sy-duftberater.js
+          test -f /tmp/sy-duftberater-import/sy-duftberater/assets/css/sy-duftberater.css
+
+      - name: Verify extracted plugin
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/sy-duftberater-import/sy-duftberater
+          grep -q "Version: 1.28.30" sy-duftberater.php
+          grep -q "1.28.30" BUILD_VERSION.txt
+          find . -name "*.php" -print0 | xargs -0 -n1 php -l
+
+      - name: Build clean installable ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/sy-duftberater-import
+          rm -f /tmp/sy-duftberater-v1.28.30.zip
+          zip -qr /tmp/sy-duftberater-v1.28.30.zip sy-duftberater
+          unzip -t /tmp/sy-duftberater-v1.28.30.zip
+
+      - name: Copy complete source into repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          rsync -a /tmp/sy-duftberater-import/sy-duftberater/ ./
+          mkdir -p releases
+          cp /tmp/sy-duftberater-v1.28.30.zip releases/sy-duftberater-v1.28.30.zip
+
+      - name: Commit complete version
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "IT-Kayali"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Plugin source is already up to date."
+          else
+            git commit -m "Version 1.28.30 – vollständiger Plugin-Quellcode und saubere ZIP"
+            git push
+          fi
